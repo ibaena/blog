@@ -1,9 +1,14 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 var expressHandlebars = require('express-handlebars');
+var morgan = require('morgan');
+var mongoose = require('mongoose');
 
 
 var PORT = process.env.PORT || 8070;
+
+mongoose.connect('mongodb://localhost/penniless');
 
 //SET HANDLEBARS ENGINE
 app.engine('handlebars', expressHandlebars({
@@ -15,33 +20,14 @@ app.set('view engine', 'handlebars');
 //Serve static content for the app from the "public" directory in the application directory.
 app.use('/public', express.static(__dirname + "/public"));
 
+//MORGAN
+app.use(morgan('combined'));
+
 //ROUTES
-app.get('/', function(req, res){
-  res.render('home',{
-    layout:'main',
-    title:'Penniless Developer',
-    head:'Penniless Developer',
-    subhead:'Where the Node Happens'
-  });
-});
-
-app.get('/tutorials', function(req, res){
-  res.render('tutorials',{
-    layout:'main',
-    title:'Penniless Developer - Tutorials',
-    head:'Penniless Tutorials',
-    subhead:'Free resources'
-  });
-});
-
-app.get('/zen', function(req, res){
-  res.render('zen',{
-    layout:'main',
-    title:'Penniless Developer - Zen',
-    head:'JS Zen',
-    subhead: 'Peace and Coding'
-  });
-});
+var routes = require('./controllers/router.js');
+var admin = require('./controllers/admin.js');
+app.use('/', routes);
+app.use('/', admin);
 
 
 
