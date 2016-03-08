@@ -19,21 +19,27 @@ app.use('/public', express.static(__dirname + "/public"));
 app.get('/', function(req, res){
   res.render('home',{
     layout:'main',
-    title:'Penniless Developer'
+    title:'Penniless Developer',
+    head:'Penniless Developer',
+    subhead:'Where the Node Happens'
   });
 });
 
 app.get('/featured', function(req, res){
   res.render('featured',{
     layout:'main',
-    title:'Penniless Developer - Featured'
+    title:'Penniless Developer - Featured',
+    head:'Featured',
+    subhead:'Whats Trending'
   });
 });
 
 app.get('/zen', function(req, res){
   res.render('zen',{
     layout:'main',
-    title:'Penniless Developer - Zen'
+    title:'Penniless Developer - Zen',
+    head:'JS Zen',
+    subhead: 'Peace and Coding'
   });
 });
 
