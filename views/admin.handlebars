@@ -1,24 +1,47 @@
+<h3>{{success}}</h3>
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <form>
-      <div class="form-group">
-        <label for="author">Author</label>
-        <input type="text" class="form-control" id="author" placeholder="Author">
+    <h2>Post To:</h2>
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+      <li role="presentation"><a href="#delete" aria-controls="delete" role="tab" data-toggle="tab">Delete</a></li>
+      <li role="presentation"><a href="#other" aria-controls="other" role="tab" data-toggle="tab">Other</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+
+      <div role="tabpanel" class="tab-pane active" id="home">
+        <form action="/njs-admin" method="POST">
+          <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" class="form-control" id="author" placeholder="Author" name="author">
+          </div>
+          <div class="form-group">
+            <label for="tile">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Title" name="title">
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" class="form-control" id="subject" placeholder="Subject" name="subject">
+          </div>
+          <div class="form-group">
+            <label for="body">Body</label>
+            <textarea type="text" class="form-control" id="body" placeholder="Body" name="body"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputFile">File input</label>
+            <input type="file" id="exampleInputFile">
+            <p class="help-block">Browse</p>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
       </div>
-      <div class="form-group">
-        <label for="tile">Title</label>
-        <input type="text" class="form-control" id="title" placeholder="Title">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Body</label>
-        <textarea type="text" class="form-control" id="body" placeholder="Body"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputFile">File input</label>
-        <input type="file" id="exampleInputFile">
-        <p class="help-block">Example block-level help text here.</p>
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+
+      <div role="tabpanel" class="tab-pane" id="delete">Coming Soon</div>
+
+      <div role="tabpanel" class="tab-pane" id="other">Coming Soon</div>
+
+    </div>
   </div>
 </div>

@@ -8,6 +8,19 @@ var mongoose = require('mongoose');
 
 var PORT = process.env.PORT || 8070;
 
+//mongoose blog model test
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var blogSchema = new Schema({
+  title:  String,
+  author: String,
+  body:   String,
+  date: { type: Date, default: Date.now }
+});
+
+var Blog = mongoose.model('Blog', blogSchema);
+
 mongoose.connect('mongodb://localhost/penniless');
 
 //SET HANDLEBARS ENGINE
@@ -22,6 +35,11 @@ app.use('/public', express.static(__dirname + "/public"));
 
 //MORGAN
 app.use(morgan('combined'));
+
+//BODYPARSER TO READ HTML
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 //ROUTES
 var routes = require('./controllers/router.js');
