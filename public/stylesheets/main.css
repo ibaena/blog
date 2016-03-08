@@ -1,8 +1,10 @@
-a.btn.btn-default {
-  background-color: #F5F8FA;
+ navbar-fixed-top {
+  background-color: transparent;
 }
 
 .jumbotron{
   background-color: #E5F2F7;
   text-align: center;
 }
+
+body { padding-bottom: 90px; }

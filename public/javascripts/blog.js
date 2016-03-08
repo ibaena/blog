@@ -4,4 +4,6 @@ $(document).ready(function(){
     $(this).tab('show');
   });
 
+  $('.dropdown-toggle').dropdown();
+
 });
