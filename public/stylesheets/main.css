@@ -1,10 +1,21 @@
  navbar-fixed-top {
-  background-color: transparent;
-}
-
-.jumbotron{
-  background-color: #E5F2F7;
-  text-align: center;
-}
-
-body { padding-bottom: 90px; }
+   background-color: transparent;
+ }
+ .jumbotron {
+   background-color: #333;
+   text-align: center;
+   color: white;
+ }
+ body {
+   padding-bottom: 90px;
+ }
+ nav ul a {
+   color: white !important;
+ }
+ nav ul a:hover {
+   color: black !important;
+   background-color: white !important;
+ }
+ .social-btn {
+   margin-bottom: 10px;
+ }

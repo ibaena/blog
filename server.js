@@ -25,12 +25,12 @@ app.get('/', function(req, res){
   });
 });
 
-app.get('/featured', function(req, res){
-  res.render('featured',{
+app.get('/tutorials', function(req, res){
+  res.render('tutorials',{
     layout:'main',
-    title:'Penniless Developer - Featured',
-    head:'Featured',
-    subhead:'Whats Trending'
+    title:'Penniless Developer - Tutorials',
+    head:'Penniless Tutorials',
+    subhead:'Free resources'
   });
 });
 
