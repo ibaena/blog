@@ -1,23 +1,13 @@
 <div class="row">
   <div class="col-md-9">
-    <div class="page-header">
-      <h2>Post Title <br /> <small>Author:</small></h2>
-
-      <p>
-        orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book...
-      </p>
-      <a href="#">Continue reading...</a>
-      <h4>Date</h4>
-    </div>
-    <div class="page-header">
-      <h2>Post Title <br /> <small>Author:</small></h2>
-
-      <p>
-        orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book...
-      </p>
-      <a href="#">Continue reading...</a>
-      <h4>Date</h4>
-    </div>
+    {{#each posts}}
+      <div class="page-header">
+        <h2>{{this.title}} <br /> <small>{{this.author}}</small></h2>
+        <p>{{this.body}}</p>
+        <a href="#">Continue reading...</a>
+        <h4>{{this.date}}</h4>
+      </div>
+    {{/each}}
   </div>
   <div class="col-md-3">
     <hr />

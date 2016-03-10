@@ -7,13 +7,14 @@ var posts = require('../models/posts');
 
 //ROUTES
 router.get('/njs-admin', function(req, res) {
-  mongoose.model('posts').find(function(err, test) {
+  mongoose.model('posts').find(function(err, post) {
     //console.log(test);
     res.render('admin', {
       layout: 'admin-layout',
       title: 'Penniless Developer - Dashboard',
       head: 'Dashboard',
-      subhead: 'Whats on your mind?'
+      subhead: 'Whats on your mind?',
+      newPost: post
     });
   });
 });
@@ -40,6 +41,20 @@ router.post('/njs-admin', function(req, res) {
       subhead: 'Whats on your mind?',
       post: newPost
     });
+  });
+});
+
+router.post('/delete', function(req, res) {
+  //console.log(req.body);
+  posts.remove({
+    _id: req.body.id
+  }, function(err) {
+    if (!err) {
+      //message.type = 'notification!';
+      res.redirect('/njs-admin');
+    } else {
+      res.redirect('/error');
+    }
   });
 });
 

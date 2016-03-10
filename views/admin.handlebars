@@ -3,9 +3,9 @@
   <div class="col-md-8 col-md-offset-2">
     <h2>Post To:</h2>
     <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Add</a></li>
       <li role="presentation"><a href="#delete" aria-controls="delete" role="tab" data-toggle="tab">Delete</a></li>
-      <li role="presentation"><a href="#other" aria-controls="other" role="tab" data-toggle="tab">Other</a></li>
+      <li role="presentation"><a href="#other" aria-controls="other" role="tab" data-toggle="tab">Update</a></li>
     </ul>
 
     <!-- Tab panes -->
@@ -38,7 +38,35 @@
         </form>
       </div>
 
-      <div role="tabpanel" class="tab-pane" id="delete">Coming Soon</div>
+      <div role="tabpanel" class="tab-pane" id="delete">
+        <form action="/delete" method="POST">
+          <table class="table table-bordered">
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Date</th>
+              <th>Delete</th>
+            </tr>
+            {{#each newPost}}
+              <tr>
+                <td>{{this.title}}</td>
+                <td>{{this.author}}</td>
+                <td>{{this.date}}</td>
+                <td>
+                  <div class="checkbox">
+                    <label>
+                      <button type="submit" class="btn btn-default" name="id" value="{{this._id}}">Delete</button>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+            {{/each}}
+          </table>
+
+        </form>
+      </div>
+
+
 
       <div role="tabpanel" class="tab-pane" id="other">Coming Soon</div>
 

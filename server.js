@@ -21,7 +21,7 @@ app.set('view engine', 'handlebars');
 app.use('/public', express.static(__dirname + "/public"));
 
 //MORGAN
-app.use(morgan('combined'));
+app.use(morgan('dev'));
 
 //BODYPARSER TO READ HTML
 app.use(bodyParser.urlencoded({

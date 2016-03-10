@@ -1,14 +1,19 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+var posts = require('../models/posts');
 
 //ROUTES
-router.get('/', function(req, res){
-  res.render('home',{
-    layout:'main',
-    title:'Penniless Developer',
-    head:'Penniless Developer',
-    subhead:'Where the Node Happens'
+router.get('/', function(req, res) {
+  mongoose.model('posts').find(function(err, post) {
+console.log(post);
+    res.render('home', {
+      layout: 'main',
+      title: 'Penniless Developer',
+      head: 'Penniless Developer',
+      subhead: 'Where the Node Happens',
+      posts: post
+    });
   });
 });
 
