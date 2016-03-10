@@ -66,9 +66,69 @@
         </form>
       </div>
 
+      <div role="tabpanel" class="tab-pane" id="other">
+        <table class="table table-bordered">
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Date</th>
+            <th>Delete</th>
+          </tr>
+          {{#each newPost}}
+            <tr>
+              <td>{{this.title}}</td>
+              <td>{{this.author}}</td>
+              <td>{{this.date}}</td>
+              <td>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#{{this._id}}">Update</button>
+              </td>
+            </tr>
+          {{/each}}
+        </table>
 
-
-      <div role="tabpanel" class="tab-pane" id="other">Coming Soon</div>
+        <!-- Modal -->
+        {{#each newPost}}
+          <div class="modal fade" id="{{this._id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <form action="/update" method="POST">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Update Form</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="author">Author</label>
+                      <input type="text" class="form-control" id="author" placeholder="Author" name="author" value="{{this.author}}">
+                    </div>
+                    <div class="form-group">
+                      <label for="tile">Title</label>
+                      <input type="text" class="form-control" id="title" placeholder="Title" name="title" value="{{this.title}}">
+                    </div>
+                    <div class="form-group">
+                      <label for="subject">Subject</label>
+                      <input type="text" class="form-control" id="subject" placeholder="Subject" name="subject" value="{{this.subject}}">
+                    </div>
+                    <div class="form-group">
+                      <label for="body">Body</label>
+                      <textarea type="text" class="form-control" id="body" placeholder="Body" name="body">{{this.body}}</textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputFile">File input</label>
+                      <input type="file" id="exampleInputFile">
+                      <p class="help-block">Browse</p>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-default" name="change_id" value="{{this._id}}">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        {{/each}}
+      </div>
 
     </div>
   </div>

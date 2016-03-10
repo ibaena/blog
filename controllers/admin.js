@@ -31,7 +31,6 @@ router.post('/njs-admin', function(req, res) {
 
   newPosts.save(function(err, newPost) {
     if (err) return console.error(err);
-    console.log(newPost);
 
     res.render('admin', {
       success: 'Successfully Posted!',
@@ -45,16 +44,29 @@ router.post('/njs-admin', function(req, res) {
 });
 
 router.post('/delete', function(req, res) {
-  //console.log(req.body);
-  posts.remove({
-    _id: req.body.id
-  }, function(err) {
-    if (!err) {
-      //message.type = 'notification!';
-      res.redirect('/njs-admin');
-    } else {
-      res.redirect('/error');
+  console.log(req.body);
+
+  res.redirect('/njs-admin');
+});
+
+router.post('/update', function(req, res) {
+  var body = req.body;
+  var conditions = {
+    _id: req.body.change
+  };
+  var update = {
+    $set: {
+      author: body.author,
+      title: body.title,
+      subject: body.subject,
+      body: body.body
     }
+  };
+  var options = {
+    upsert: true
+  };
+  posts.update(conditions, update, options, function(){
+      res.redirect('njs-admin');
   });
 });
 
