@@ -6,22 +6,9 @@ var morgan = require('morgan');
 var mongoose = require('mongoose');
 
 
-var PORT = process.env.PORT || 8070;
 
-//mongoose blog model test
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var PORT = process.env.PORT || 8001;
 
-var blogSchema = new Schema({
-  title:  String,
-  author: String,
-  body:   String,
-  date: { type: Date, default: Date.now }
-});
-
-var Blog = mongoose.model('Blog', blogSchema);
-
-mongoose.connect('mongodb://localhost/penniless');
 
 //SET HANDLEBARS ENGINE
 app.engine('handlebars', expressHandlebars({

@@ -1,12 +1,17 @@
-//mongoose blog model test
+//Set Model
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+mongoose.connect('mongodb://localhost:27017/blog-dev');
 
+//schema
 var blogSchema = new Schema({
-  title:  String,
   author: String,
+  title:  String,
+  subject:  String,
   body:   String,
-  date: { type: Date, default: Date.now }
+  date: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('Posts', blogSchema);
+var posts = mongoose.model('posts', blogSchema);
+
+module.exports = posts;
