@@ -10,16 +10,17 @@ passport.use('local-signup', new Strategy({
     passReqToCallback: true,
   },
   function(req, username, password, cb) {
+    console.log(req.body.email);
     users.findOne({
       'email': req.body.email
     }, function(err, user) {
-      console.log(user);
       if (err) {
+        console.log('1-err');
         return cb(err);
       }
-      if (!user) {
-        return cb(null, false);
-      } else {
+      if (user) {
+        console.log('cannot create');
+      }else {
         var body = req.body;
 
         var newUser = users({
@@ -31,10 +32,11 @@ passport.use('local-signup', new Strategy({
 
         newUser.save(function(err, newUser) {
           if (err) return console.error(err);
-          return cb(null, user);
+          return cb(null, newUser);
         });
-
       }
+
+
     });
   }));
 

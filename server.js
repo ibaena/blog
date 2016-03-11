@@ -41,7 +41,7 @@ app.use(session({
   secret: 'DarkKnight',
   cookie: {
     secure: false,
-    maxAge: 1000 * 60 * 60
+    maxAge: 1000 * 60 * 10
   },
   saveUninitialized: true,
   resave: true

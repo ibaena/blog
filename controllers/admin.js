@@ -8,6 +8,7 @@ var users = require('../models/users');
 
 //ADMIN DASHBOARD MAIN
 router.get('/njs-admin', function(req, res) {
+  console.log(req.session);
   if (!req.user) {
     res.redirect('/login');
   } else {
@@ -20,7 +21,7 @@ router.get('/njs-admin', function(req, res) {
         newPost: post,
         name: req.user
       });
-    });
+    }).sort({date: -1});
   }
 });
 
