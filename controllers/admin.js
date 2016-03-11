@@ -8,7 +8,6 @@ var posts = require('../models/posts');
 //ROUTES
 router.get('/njs-admin', function(req, res) {
   mongoose.model('posts').find(function(err, post) {
-    //console.log(test);
     res.render('admin', {
       layout: 'admin-layout',
       title: 'Penniless Developer - Dashboard',
@@ -31,7 +30,6 @@ router.post('/njs-admin', function(req, res) {
 
   newPosts.save(function(err, newPost) {
     if (err) return console.error(err);
-
     res.render('admin', {
       success: 'Successfully Posted!',
       layout: 'admin-layout',
@@ -44,10 +42,18 @@ router.post('/njs-admin', function(req, res) {
 });
 
 router.post('/delete', function(req, res) {
-  console.log(req.body);
-
-  res.redirect('/njs-admin');
-});
+  //console.log(req.body);
+  posts.remove({
+    _id: req.body.id
+  }, function(err) {
+    if (!err) {
+      //message.type = 'notification!';
+      res.redirect('/njs-admin');
+    } else {
+      res.redirect('/error');
+    }
+  });
+})
 
 router.post('/update', function(req, res) {
   posts.findOneAndUpdate({

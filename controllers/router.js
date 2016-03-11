@@ -6,7 +6,6 @@ var posts = require('../models/posts');
 //ROUTES
 router.get('/', function(req, res) {
   mongoose.model('posts').find(function(err, post) {
-console.log(post);
     res.render('home', {
       layout: 'main',
       title: 'Penniless Developer',
