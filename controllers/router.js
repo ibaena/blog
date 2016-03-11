@@ -14,7 +14,7 @@ console.log(post);
       subhead: 'Where the Node Happens',
       posts: post
     });
-  });
+  }).sort({date: 1});
 });
 
 router.get('/tutorials', function(req, res){
