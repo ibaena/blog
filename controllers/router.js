@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+var mongoosePagination = require ('mongoose-pagination');
 var posts = require('../models/posts');
 var news = require('../models/news');
 
@@ -16,7 +17,7 @@ router.get('/', function(req, res) {
         news: news,
         posts: post
       });
-    }).sort({date: -1}).limit(10);
+    }).sort({date: -1}).limit(15);
   }).sort({date: -1});
 });
 

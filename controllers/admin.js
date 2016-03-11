@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+
 var posts = require('../models/posts');
 var news = require('../models/news');
+var users = require('../models/users');
 
 //ADMIN DASHBOARD MAIN
 router.get('/njs-admin', function(req, res) {
@@ -30,7 +32,7 @@ router.post('/njs-admin', function(req, res) {
 
   newPosts.save(function(err, newPost) {
     if (err) return console.error(err);
-    res.direct('/njs-admin');
+    res.redirect('/njs-admin');
   });
 });
 
