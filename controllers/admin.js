@@ -2,10 +2,9 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var posts = require('../models/posts');
+var news = require('../models/news');
 
-
-
-//ROUTES
+//ADMIN DASHBOARD MAIN
 router.get('/njs-admin', function(req, res) {
   mongoose.model('posts').find(function(err, post) {
     res.render('admin', {
@@ -18,6 +17,7 @@ router.get('/njs-admin', function(req, res) {
   });
 });
 
+//CREATE NEW POSTS
 router.post('/njs-admin', function(req, res) {
   var body = req.body;
 
@@ -30,17 +30,11 @@ router.post('/njs-admin', function(req, res) {
 
   newPosts.save(function(err, newPost) {
     if (err) return console.error(err);
-    res.render('admin', {
-      success: 'Successfully Posted!',
-      layout: 'admin-layout',
-      title: 'Penniless Developer - Dashboard',
-      head: 'Dashboard',
-      subhead: 'Whats on your mind?',
-      post: newPost
-    });
+    res.direct('/njs-admin');
   });
 });
 
+//DELETE POST BY ID
 router.post('/delete', function(req, res) {
   //console.log(req.body);
   posts.remove({
@@ -53,8 +47,9 @@ router.post('/delete', function(req, res) {
       res.redirect('/error');
     }
   });
-})
+});
 
+//UPDATE POST BY ID
 router.post('/update', function(req, res) {
   posts.findOneAndUpdate({
     _id: req.body.change_id
@@ -72,7 +67,6 @@ router.post('/update', function(req, res) {
       console.log("Something wrong when updating data!");
     }
     res.redirect('/njs-admin');
-    console.log(doc);
   });
 });
 
