@@ -13,6 +13,7 @@ passport.use('local-signup', new Strategy({
     users.findOne({
       'email': req.body.email
     }, function(err, user) {
+      console.log(user);
       if (err) {
         return cb(err);
       }
@@ -30,8 +31,9 @@ passport.use('local-signup', new Strategy({
 
         newUser.save(function(err, newUser) {
           if (err) return console.error(err);
+          return cb(null, user);
         });
-        return cb(null, user);
+
       }
     });
   }));

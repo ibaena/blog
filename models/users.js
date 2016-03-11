@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var bcrypt = require('bcryptjs');
 //mongoose.connect('mongodb://localhost:27017/blog-dev');
 
 //schema
