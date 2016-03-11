@@ -50,23 +50,23 @@ router.post('/delete', function(req, res) {
 });
 
 router.post('/update', function(req, res) {
-  var body = req.body;
-  var conditions = {
-    _id: req.body.change
-  };
-  var update = {
+  posts.findOneAndUpdate({
+    _id: req.body.change_id
+  }, {
     $set: {
-      author: body.author,
-      title: body.title,
-      subject: body.subject,
-      body: body.body
+      author: req.body.author,
+      title: req.body.title,
+      subject: req.body.subject,
+      body: req.body.body,
     }
-  };
-  var options = {
-    upsert: true
-  };
-  posts.update(conditions, update, options, function(){
-      res.redirect('njs-admin');
+  }, {
+    new: true
+  }, function(err, doc) {
+    if (err) {
+      console.log("Something wrong when updating data!");
+    }
+    res.redirect('/njs-admin');
+    console.log(doc);
   });
 });
 
