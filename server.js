@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var passport = require('./config/passport');
 var flash = require('connect-flash');
+var passport = require('passport');
 
 
 
@@ -51,10 +52,12 @@ app.use(passport.session());
 
 
 //ROUTES
-var routes = require('./controllers/router.js');
-var admin = require('./controllers/admin.js');
+var routes = require('./controllers/router');
+var admin = require('./controllers/admin');
+var auth = require('./controllers/auth');
 app.use('/', routes);
 app.use('/', admin);
+app.use('/', auth);
 
 
 
