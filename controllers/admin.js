@@ -8,15 +8,20 @@ var users = require('../models/users');
 
 //ADMIN DASHBOARD MAIN
 router.get('/njs-admin', function(req, res) {
-  mongoose.model('posts').find(function(err, post) {
-    res.render('admin', {
-      layout: 'admin-layout',
-      title: 'Penniless Developer - Dashboard',
-      head: 'Dashboard',
-      subhead: 'Whats on your mind?',
-      newPost: post
+  if (!req.user) {
+    res.redirect('/login');
+  } else {
+    mongoose.model('posts').find(function(err, post) {
+      res.render('admin', {
+        layout: 'admin-layout',
+        title: 'Penniless Developer - Dashboard',
+        head: 'Dashboard',
+        subhead: 'Whats on your mind?',
+        newPost: post,
+        name: req.user
+      });
     });
-  });
+  }
 });
 
 //CREATE NEW POSTS

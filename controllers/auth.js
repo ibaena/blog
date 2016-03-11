@@ -12,7 +12,7 @@ router.get('/register', function(req, res) {
     layout: 'admin-layout',
     title: 'Penniless Developer - Dashboard',
     head: 'Register',
-    subhead: 'Lets Get Started',
+    subhead: 'Lets Get Started!',
   });
 });
 
@@ -28,8 +28,8 @@ router.get('/login', function(req, res) {
   res.render('login', {
     layout: 'admin-layout',
     title: 'Penniless Developer - Dashboard',
-    head: 'Register',
-    subhead: 'Lets Get Started',
+    head: 'Login',
+    subhead: 'Hello Again!',
   });
 });
 

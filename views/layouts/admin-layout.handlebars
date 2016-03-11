@@ -32,7 +32,12 @@
 
   <div class="container">
     <div class="jumbotron">
-      <h1>{{head}}</h1>
+      <h1>
+        {{#each name}}
+        {{this.first_name}}'s
+        {{/each}}
+        {{head}}
+      </h1>
       <p>{{subhead}}</p>
     </div>
     {{{body}}}

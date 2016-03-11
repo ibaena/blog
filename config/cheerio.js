@@ -25,7 +25,7 @@ request('https://news.ycombinator.com/', function(error, response, body) {
           if (err) {
             console.log(err);
           } else {
-            console.log(saved);
+            //console.log(saved);
           }
         });
       }

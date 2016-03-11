@@ -8,6 +8,7 @@ var session = require('express-session');
 var passport = require('./config/passport');
 var flash = require('connect-flash');
 var passport = require('passport');
+var cheerio = require('./config/cheerio');
 
 
 
@@ -21,10 +22,10 @@ app.engine('handlebars', expressHandlebars({
 
 app.set('view engine', 'handlebars');
 
-//Serve static content for the app from the "public" directory in the application directory.
+//SERVE FILES FROM PUBLIC DIR
 app.use('/public', express.static(__dirname + "/public"));
 
-//flash
+//FLASH
 app.use(flash());
 
 //MORGAN
@@ -46,7 +47,7 @@ app.use(session({
   resave: true
 }));
 
-//PASSPORT initialize
+//PASSPORT INITIALIZE
 app.use(passport.initialize());
 app.use(passport.session());
 
