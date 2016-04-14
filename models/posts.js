@@ -1,7 +1,7 @@
 //Set Model
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-mongoose.connect('mongodb://localhost:27017/blog-dev');
+mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds023530.mlab.com:23530/heroku_83vxxjl0');
 
 //schema
 var blogSchema = new Schema({
